@@ -1,0 +1,32 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <% creator = "@3xStan";
+    url = "/500";
+    page_title = "Error :( -- IlliniFurs";
+    description = "Sorry! An unknown error occurred.";
+    image_url = "/logo.png";
+    head_scripts = null;
+    stylesheets = null;
+    tail_scripts = null; %>
+
+    <%- include('../partials/head', {creator: creator, url: url, page_title: page_title, description: description, image_url: image_url, head_scripts: head_scripts, stylesheets: stylesheets}) %>
+</head>
+
+<body>
+    <%- include('../partials/header') %>
+    <br />
+    <p>
+        Sorry! An unknown error occurred. If an admin of this site sees the following, this might be able to help:
+    </p>
+    <div class="caption" style="width: max-content;">
+        <%- error %>
+    </div>
+    <% if (tail_scripts) {
+        tail_scripts.forEach(function(script) { %>
+            <script src="/js<%= script %>"></script> 
+        <% }) %>
+    <% } %>
+</body>
+</html>

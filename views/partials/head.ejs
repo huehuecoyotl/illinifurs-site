@@ -1,0 +1,27 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@illinifurs" />
+<meta name="twitter:creator" content="<%= creator %>" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://illinifurs.com<%= url %>" />
+<meta property='og:title' content='<%= page_title %>' />
+<meta property="og:description" content="<%= description %>" />
+<meta property="og:image" content="https://illinifurs.com/images<%= image_url %>" />
+
+<title><%= page_title %></title>
+<link rel="icon" type="image/png" href="/images/favicon.png" />
+
+<% if (head_scripts) {
+    head_scripts.forEach(function(script) { %>
+        <script src="/js<%= script %>"></script> 
+    <% })
+} %>
+<script src="/js/illinifurs-nav.js"></script>
+
+<% if (stylesheets) {
+    stylesheets.forEach(function(sheet) { %>
+        <link rel="stylesheet" href="/css<%= sheet %>">
+    <% })
+} %>
+<link rel="stylesheet" href="/css/illinifurs.css">

@@ -1,0 +1,29 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <% creator = "@3xStan";
+    url = "/404";
+    page_title = "File not found :( -- IlliniFurs";
+    description = "Sorry! The page you attempted to navigate to could not be found.";
+    image_url = "/logo.png";
+    head_scripts = null;
+    stylesheets = null;
+    tail_scripts = null; %>
+
+    <%- include('../partials/head', {creator: creator, url: url, page_title: page_title, description: description, image_url: image_url, head_scripts: head_scripts, stylesheets: stylesheets}) %>
+</head>
+
+<body>
+    <%- include('../partials/header') %>
+    <br />
+    <p>
+        Sorry! The page you attempted to navigate to could not be found.
+    </p>
+    <% if (tail_scripts) {
+        tail_scripts.forEach(function(script) { %>
+            <script src="/js<%= script %>"></script> 
+        <% }) %>
+    <% } %>
+</body>
+</html>
