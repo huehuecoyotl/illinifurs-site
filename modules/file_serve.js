@@ -15,6 +15,11 @@ router.get('/js/:file', function (req, res) {
     var file = req.params.file;
     res.sendFile('js/' + file, req.app.locals.site_options); 
 });
+router.get('/fonts/:font/:file', function (req, res) {
+    var font = req.params.font;
+    var file = req.params.file;
+    res.sendFile('fonts/' + font + '/' + file, req.app.locals.site_options); 
+});
 
 router.get('/*.txt', function (req, res) {
     var file = req.params[0] + ".txt";
