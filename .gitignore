@@ -3,3 +3,5 @@ core
 node_modules/*
 public/html/*
 public/txt/coyotes.txt
+misc/pages.json
+views/compiled/*

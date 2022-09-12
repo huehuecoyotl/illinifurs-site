@@ -2,6 +2,15 @@
 const express = require('express');
 const app = express();
 
+const page_info = require(__dirname + '/misc/pages.json');
+file_not_found_entry = null;
+for (row in page_info) {
+    if (page_info[row]["pageid"] == "404") {
+        file_not_found_entry = page_info[row];
+        break;
+    }
+}
+
 // How pages render
 app.set('view engine', 'ejs');
 // Trust that nginx did https if it says it did (but no further proxies)
@@ -32,7 +41,7 @@ app.use(webhooks.router);
 // If we've got this far, it doesn't exist
 app.use(function (req, res) {
     res.status(404);
-    res.render('pages/404');
+    res.render('pages/engine', { page: file_not_found_entry });
 });
 
 // Handle errors (but keep in mind, some may just be 404s from sendFile calls)
@@ -40,7 +49,7 @@ app.use(function (err, req, res, next) {
     var status = err.status || err.statusCode;
     if (status === 404) {
         res.status(404);
-        res.render('pages/404');
+        res.render('pages/engine', { page: file_not_found_entry });
     } else {
         if (res.headersSent) {
             return next(err);

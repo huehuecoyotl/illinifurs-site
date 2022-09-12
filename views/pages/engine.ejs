@@ -2,11 +2,11 @@
 
 <html lang="en">
 <head>
-    <% creator = "@3xStan";
-    url = "/500";
-    page_title = "Error :( -- IlliniFurs";
-    description = "Sorry! An unknown error occurred.";
-    image_url = "/logo.png";
+    <% creator = page['author'];
+    url = (page['pageid'] == "index" ? "" : page['pageid']) ;
+    page_title = page['title'];
+    description = page['description'];
+    image_url = page['focus_image'];
     head_scripts = null;
     stylesheets = null;
     tail_scripts = null; %>
@@ -16,19 +16,17 @@
 
 <body>
     <%- include('../partials/header') %>
- 
+
     <div class="column left-gutter">
         &nbsp;
     </div>
     <div class="column middle">
         <h1>
-            ERROR
-        </h1>  
-        <p>
-            Sorry! An unknown error occurred. If an admin of this site sees the following, this might be able to help:
-        </p>
-        <div class="caption" style="width: max-content;">
-            <%- error %>
+            <%= page['title'].toUpperCase() %>
+        </h1>
+        
+        <div class="body-text">
+            <%- include('../compiled/' + page['directory'] + '/' + page['pageid']) %>
         </div>
     </div>
     <div class="column right-gutter">

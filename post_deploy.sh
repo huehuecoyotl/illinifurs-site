@@ -16,6 +16,11 @@ fi
 mkdir -p ./public/html/
 cp /apps/secrets/*.html ./public/html/
 
+if !(git diff --quiet HEAD^.. -- ./markdown/ && git diff --quiet HEAD^.. -- ./scripts/page_generator.rb)
+then
+    ./scripts/page_generator.rb
+fi
+
 mkdir -p ./public/txt/
 cp ./misc/coyotes.txt ./public/txt/
 date --rfc-2822 >> ./public/txt/coyotes.txt

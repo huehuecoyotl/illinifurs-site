@@ -5,17 +5,19 @@
 
   --mainbg:     #13294b;
   --mainfg:     #f8fafc;
-  --mainfglite: #ff5f05;
+  --mainfgbold: #ff5f05;
+  --mainfglite: #009fd4;
 
   --cardbg:     #f8fafc;
   --cardfg:     #13294b;
 
-  --headfont: Trigot;
+  --headfont: Trigot, serif;
   --sectfont: 'Fjalla One', sans-serif;
   --mainfont: Montserrat, sans-serif;
 
-  --headfontsize: 32px;
-  --mainfontsize: 18px;
+  --headfontsize:  32px;
+  --mainfontsize:  18px;
+  --smallfontsize: 14px;
 }
 
 body {
@@ -32,7 +34,20 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 a {
+  color: var(--mainfgbold);
+}
+
+blockquote {
+  border-left: 3px solid var(--mainfglite);
   color: var(--mainfglite);
+  margin-bottom: 10px;
+  margin-left: 50px;
+  margin-top: 10px;
+  padding-left: 15px;
+} 
+
+blockquote p {
+  text-align: justify;
 }
 
 .topnav {
@@ -92,7 +107,6 @@ a {
 
 .topnav-content a {
   border-radius: 15px 15px 0 0;
-  transition: ;
 }
 
 .color-bar {
@@ -100,30 +114,27 @@ a {
   background-color: var(--headfg);
 }
 
-body.index-page {
-  background-color: var(--headbg);
-  color: var(--headfg);
-}
-
-.index-page .topnav {
+.body-text {
+  margin: 0 auto;
+  max-width: 90%;
   text-align: center;
 }
 
-.index-page .topnav .gutter, .index-page .topnav a, .index-page .color-bar, .index-page .topnav .spacer {
-  display: none;
+.body-text p, .body-text ul {
+  margin: 20px 0;
+  text-align: justify;
 }
 
-.index-page .topnav-content {
-  margin: auto;
-  position: relative;
+.caption {
+  color: var(--mainfglite);
+  font-size: var(--smallfontsize);
+  margin: 10px auto;
+  max-width: 90%;
+  text-align: justify;
 }
 
-.index-page .topnav-content a {
-  border: 1px solid var(--headfg);
-  border-radius: 15px 5px;
-  display: block;
-  margin: 2px;
-  padding: 10px 16px 4px 16px;
+.body-text .caption {
+  text-align: center;
 }
 
 .site-name {
@@ -137,6 +148,38 @@ body.index-page {
   padding-left: 8px;  
   display: inline-block;
   height: 2ex;
+}
+
+.column {
+  float: left;
+}
+
+.left-gutter, .right-gutter {
+  width: 15%;
+}
+
+.left-gutter a, .right-gutter a {
+  text-decoration: none;
+}
+
+.left-gutter {
+  margin-left: 5%;
+}
+
+.left-phone-gutter {
+  display: none;
+}
+
+.right-gutter {
+  margin-right: 5%;
+}
+
+.middle {
+  width: 60%;
+}
+
+.gutter-spacing {
+  line-height: 3em;
 }
 
 @media screen and (max-width: 960px) {
@@ -185,17 +228,23 @@ body.index-page {
     margin-bottom: 4px;
   }
 
-  .index-page .topnav-wrapper {
-    max-height: 55px;
-    font-size: var(--headfontsize);
+  .left-gutter {
+    display: none;
   }
 
-  .index-page .topnav-content {
-    width: 100%;
+  .left-phone-gutter, .right-gutter {
+    display: inline-block;
+    width: 50%;
+    margin: 25px 0;
   }
 
-  .index-page .topnav-content a {
+  .middle {
     float: none;
-    border-radius: 15px;
+    width: 89%;
+    margin: 0 auto;
+  }
+
+  .gutter-spacing {
+    line-height: 0;
   }
 }
