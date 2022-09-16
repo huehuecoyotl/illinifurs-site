@@ -7,9 +7,9 @@
     page_title = page['title'];
     description = page['description'];
     image_url = page['focus_image'];
-    head_scripts = null;
-    stylesheets = null;
-    tail_scripts = null; %>
+    head_scripts = page['head_scripts'];
+    stylesheets = page['stylesheets'];
+    tail_scripts = page['tail_scripts']; %>
 
     <%- include('../partials/head', {creator: creator, url: url, page_title: page_title, description: description, image_url: image_url, head_scripts: head_scripts, stylesheets: stylesheets}) %>
 </head>
@@ -33,10 +33,6 @@
         &nbsp;
     </div>
 
-    <% if (tail_scripts) {
-        tail_scripts.forEach(function(script) { %>
-            <script src="/js<%= script %>"></script> 
-        <% }) %>
-    <% } %>
+    <%- include('../partials/tail', {tail_scripts: tail_scripts}) %>
 </body>
 </html>

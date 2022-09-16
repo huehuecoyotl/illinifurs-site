@@ -77,7 +77,7 @@ blockquote p {
   margin: 0 auto;
 }
 
-.topnav a > .site-name {
+.site-name {
   margin: 0 auto;
   font-size: 32px;
   vertical-align: bottom;
@@ -137,12 +137,6 @@ blockquote p {
   text-align: center;
 }
 
-.site-name {
-  font-family: var(--headfont);
-  color: var(--headfg);
-  font-size: 144px;
-}
-
 .spacer {
   border-right: 1px solid var(--headfg);
   padding-left: 8px;  
@@ -180,6 +174,14 @@ blockquote p {
 
 .gutter-spacing {
   line-height: 3em;
+}
+
+.fotorama__img {
+  border-radius: 15px !important;
+}
+
+.fotorama--fullscreen .fotorama__img {
+  border-radius: 0px !important;
 }
 
 @media screen and (max-width: 960px) {
@@ -246,5 +248,19 @@ blockquote p {
 
   .gutter-spacing {
     line-height: 0;
+  }
+
+  .fotorama__wrap {
+    width: 80% !important;
+  }
+
+  .fotorama--fullscreen .fotorama__wrap {
+    width: 100% !important;
+  }
+}
+
+@media screen and (max-width: 480) {
+  .fotorama__wrap {
+    width: 100% !important;
   }
 }

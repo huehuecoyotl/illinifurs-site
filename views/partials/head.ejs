@@ -14,16 +14,16 @@
 <title><%= page_title %></title>
 <link rel="icon" type="image/png" href="/images/favicon.png" />
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <% if (head_scripts) {
     head_scripts.forEach(function(script) { %>
-        <script src="<%= script %>"></script> 
+        <script src="<%= script["src"] ? script["src"] : script %>" <% if (script["integrity"]) { %> integrity="<%= script["integrity"] %>" <% } if ((script["src"] && script["src"].startsWith("http")) || script.startsWith("http")) { %> crossorigin="anonymous" referrerpolicy="no-referrer" <% } %>></script> 
     <% })
 } %>
-<script src="/js/illinifurs-nav.js"></script>
 
 <% if (stylesheets) {
     stylesheets.forEach(function(sheet) { %>
-        <link rel="stylesheet" href="<%= sheet %>">
+        <link rel="stylesheet" href="<%= sheet["href"] ? sheet["href"] : sheet %>" <% if (sheet["integrity"]) { %> integrity="<%= sheet["integrity"] %>" <% } if ((sheet["href"] && sheet["href"].startsWith("http")) || sheet.startsWith("http")) { %> crossorigin="anonymous" referrerpolicy="no-referrer" <% } %>>
     <% })
 } %>
 <link rel="stylesheet" href="/css/illinifurs.css">
@@ -44,5 +44,5 @@
     */
 -->
 <link rel="stylesheet" href="/css/Trigot.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fjalla+One">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat">
+<link rel="stylesheet" crossorigin="anonymous" referrerpolicy="no-referrer" href="https://fonts.googleapis.com/css2?family=Fjalla+One">
+<link rel="stylesheet" crossorigin="anonymous" referrerpolicy="no-referrer" href="https://fonts.googleapis.com/css2?family=Montserrat">

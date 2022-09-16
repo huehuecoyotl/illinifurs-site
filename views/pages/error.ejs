@@ -35,10 +35,6 @@
         &nbsp;
     </div>
 
-    <% if (tail_scripts) {
-        tail_scripts.forEach(function(script) { %>
-            <script src="/js<%= script %>"></script> 
-        <% }) %>
-    <% } %>
+    <%- include('../partials/tail', {tail_scripts: tail_scripts}) %>
 </body>
 </html>
