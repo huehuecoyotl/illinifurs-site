@@ -211,6 +211,11 @@ blockquote p {
   border-radius: 0px !important;
 }
 
+.twitter-timeline {
+  margin-top: 3ex !important;
+  margin-bottom: 3ex !important;
+}
+
 @media screen and (max-width: 960px) {
   .topnav .gutter, .topnav .spacer, .topnav-content a, .index-page .topnav a.icon {
     display: none;
@@ -258,14 +263,17 @@ blockquote p {
     margin-bottom: 4px;
   }
 
+  .column {
+    float: none;
+  }
+
   .left-gutter {
     display: none;
   }
 
   .left-phone-gutter, .right-gutter {
-    display: inline-block;
-    width: 50%;
-    margin: 25px 0;
+    width: 79%;
+    margin: 0 auto;
   }
 
   .middle {

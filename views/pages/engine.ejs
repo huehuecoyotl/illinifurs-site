@@ -9,16 +9,39 @@
     image_url = page['focus_image'];
     head_scripts = page['head_scripts'];
     stylesheets = page['stylesheets'];
-    tail_scripts = page['tail_scripts']; %>
+    tail_scripts = page['tail_scripts'];
+    if (page['widgets']) {
+        if (tail_scripts) {
+            tail_scripts.push("https://platform.twitter.com/widgets.js")
+        } else {
+            tail_scripts = ["https://platform.twitter.com/widgets.js"]
+        }
+    } %>
 
     <%- include('../partials/head', {creator: creator, url: url, page_title: page_title, description: description, image_url: image_url, head_scripts: head_scripts, stylesheets: stylesheets}) %>
 </head>
+
+<% function leftGutter(widgets) {
+    if (widgets) { %>
+        &nbsp;
+    <% } else { %>
+        &nbsp;
+    <% }
+} %>
+
+<% function rightGutter(widgets) {
+    if (widgets) { %>
+        <a class="twitter-timeline" data-theme="dark" data-height="720" style="margin-top: 3ex;" href="https://twitter.com/IlliniFurs">Tweets by IlliniFurs</a>
+    <% } else { %>
+        &nbsp;
+    <% }
+} %>
 
 <body>
     <%- include('../partials/header') %>
 
     <div class="column left-gutter">
-        &nbsp;
+        <%= leftGutter(page['widgets']) %>
     </div>
     <div class="column middle">
         <h1>
@@ -30,7 +53,10 @@
         </div>
     </div>
     <div class="column right-gutter">
-        &nbsp;
+        <%= rightGutter(page['widgets']) %>
+    </div>
+    <div class="column left-phone-gutter">
+        <%= leftGutter(page['widgets']) %>
     </div>
 
     <%- include('../partials/tail', {tail_scripts: tail_scripts}) %>

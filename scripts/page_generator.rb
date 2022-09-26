@@ -30,8 +30,16 @@ Dir.foreach("./markdown/") do |dirname|
         is_string = not(value[0].eql? '[' or value[0].eql? '{')
         value_head = '{"value": ' + (is_string ? '"' : '')
         value_tail = (is_string ? '"' : '') + '}'
+        value = JSON.parse(value_head + value + value_tail)["value"]
+        if value.is_a? String
+          if value.downcase.eql? "f" or value.downcase.eql? "false"
+            value = false
+          elsif value.downcase.eql? "t" or value.downcase.eql? "true"
+            value = true
+          end
+        end
         
-        curr_page[key] = JSON.parse(value_head + value + value_tail)["value"]
+        curr_page[key] = value
       end
     end
 

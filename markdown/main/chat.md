@@ -4,6 +4,7 @@
 [//]: # (author: @3xStan)
 [//]: # (description: Learn more about the IlliniFurs group chat, including who to contact for access.)
 [//]: # (focus_image: https://illinifurs.com/images/namedLogo.png)
+[//]: # (widgets: true)
 [//]: # (tail_scripts: ["/js/illinifurs-collapsible.js"])
 
 # Telegram
