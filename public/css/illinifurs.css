@@ -103,10 +103,16 @@ blockquote p {
 
 .topnav-content {
   display: inline-block;
+  position: absolute;
+  bottom: 0;
 }
 
 .topnav-content a {
   border-radius: 15px 15px 0 0;
+}
+
+.topnav-wrapper {
+  float: left;
 }
 
 .color-bar {
@@ -125,6 +131,26 @@ blockquote p {
   text-align: justify;
 }
 
+.card {
+  display: inline-block;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  min-width: 10em;
+  width: 15%;
+  max-width: 90%;
+  margin: 6px 16px;
+}
+
+.card.focused {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.container {
+  height: auto;
+  overflow: hidden;
+  padding: 6px 16px;
+}
+
 .caption {
   color: var(--mainfglite);
   font-size: var(--smallfontsize);
@@ -138,8 +164,9 @@ blockquote p {
 }
 
 .spacer {
-  border-right: 1px solid var(--headfg);
   padding-left: 8px;  
+  border-right: 1px solid var(--headfg);
+  margin-right: 6px;
   display: inline-block;
   height: 2ex;
 }
@@ -206,6 +233,7 @@ blockquote p {
     max-height: 0;
     font-size: 0;
     transition: 0.3s;
+    float: none;
   }
 
   .topnav-content.responsive {
