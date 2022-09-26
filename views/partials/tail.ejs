@@ -1,6 +1,6 @@
 <% if (tail_scripts) {
     tail_scripts.forEach(function(script) { %>
-        <script src="/js<%= script %>"></script> 
+        <script src="<%= script %>"></script> 
     <% }) %>
 <% } %>
 <script>$("#nav-button").click(function() {$(".topnav-content").toggleClass('responsive');});</script>

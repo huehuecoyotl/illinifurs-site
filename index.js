@@ -27,7 +27,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
 // Serve the static pages
-var static = require('./modules/static.js');
+var static = require('./modules/engine.js');
 app.use(static.router);
 
 // Retrieving specific files (images, css, etc.)
