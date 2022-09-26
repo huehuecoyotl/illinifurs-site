@@ -26,9 +26,9 @@ app.locals.site_options = {
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
-// Serve the static pages
-var static = require('./modules/engine.js');
-app.use(static.router);
+// Serve the engine pages
+var engine = require('./modules/engine.js');
+app.use(engine.router);
 
 // Retrieving specific files (images, css, etc.)
 var file_serve = require('./modules/file_serve.js');
@@ -37,6 +37,10 @@ app.use(file_serve.router);
 // Webhooks stuff
 var webhooks = require('./modules/webhooks.js');
 app.use(webhooks.router);
+
+// Telegram bot
+var telegram = require('./modules/telegram.js');
+app.use(telegram.router);
 
 // If we've got this far, it doesn't exist
 app.use(function (req, res) {
