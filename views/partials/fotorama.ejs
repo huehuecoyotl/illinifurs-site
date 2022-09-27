@@ -1,5 +1,9 @@
 <center><div class="fotorama" data-width="60%" data-allowfullscreen="true" data-fit="scaledown" data-transition="crossfade" data-loop="true" data-autoplay="true" data-keyboard="true" data-shuffle="true">
-    <img src="https://se-images-blob.campuslabs.com/documents/5594/c8c48a7e-13e8-4701-b008-08da3e41b2fb/1500.jpg">
-    <img src="https://se-images-blob.campuslabs.com/documents/5594/593de7f9-97a7-4b17-40be-08da3e122ed8/1500.jpg">
-    <img src="https://se-images-blob.campuslabs.com/documents/5594/a4f64fb5-a06f-46bc-40bf-08da3e122ed8/1500.jpg">
+<% fotorama_images.forEach(function(image){ 
+    if (image['type'] == 'image') { %>
+        <img src="<%= image['url'] %>" <%= image['caption'] ? `data-caption=${image['caption']}` : '' %> >
+    <% } else if (image['type'] == 'video') { %>
+        <a href="<%= image['url'] %>"><%= image['caption'] %></a>
+    <% }
+}); %>
 </div></center>

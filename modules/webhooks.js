@@ -4,10 +4,14 @@ const router = express.Router();
 // We need to execute some bash scripts on webhook execution
 const execSync = require('child_process').execSync;
 
-// Keep the actual webhooks we use themselves secret
-const home_directory = (process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE);
-const secrets = require(home_directory + '/secrets/secret.json');
-const self_hook = secrets["git-path-self"];
+var self_hook = "do-not-use"
+
+if (require('os').hostname() == "illinifurs.com") {
+    // Keep the actual webhooks we use secret
+    const home_directory = (process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE);
+    const secrets = require(home_directory + '/secrets/secret.json');
+    self_hook = secrets["git-path-self"];
+}
 
 router.post(`/${self_hook}`, function (req, res) {
     execSync('bash ' + home_directory + '/site/source/post_deploy.sh');

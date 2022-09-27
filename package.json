@@ -21,6 +21,8 @@
     "pm2": "^5.2.0"
   },
   "dependencies": {
-    "node-telegram-bot-api": "^0.59.0"
+    "mysql": "^2.18.1",
+    "node-telegram-bot-api": "^0.59.0",
+    "sqlite3": "^5.1.1"
   }
 }

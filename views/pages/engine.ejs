@@ -10,6 +10,22 @@
     head_scripts = page['head_scripts'];
     stylesheets = page['stylesheets'];
     tail_scripts = page['tail_scripts'];
+    if (page['fotorama']) {
+        fotorama_script = {"src": "https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.min.js", "integrity": "sha512-cWEytOR8S4v/Sd3G5P1Yb7NbYgF1YAUzlg1/XpDuouZVo3FEiMXbeWh4zewcYu/sXYQR5PgYLRbhf18X/0vpRg=="};
+        fotorama_css = {"href": "https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.min.css", "integrity": "sha512-bjwk1c6AQQOi6kaFhKNrqoCNLHpq8PT+I42jY/il3r5Ho/Wd+QUT6Pf3WGZa/BwSdRSIjVGBsPtPPo95gt/SLg=="};
+
+        if (head_scripts) {
+            head_scripts.push(fotorama_script)
+        } else {
+            head_scripts = [fotorama_script]
+        }
+
+        if (stylesheets) {
+            stylesheets.push(fotorama_css)
+        } else {
+            stylesheets = [fotorama_css]
+        }
+    }
     if (page['widgets']) {
         if (tail_scripts) {
             tail_scripts.push("https://platform.twitter.com/widgets.js")
@@ -49,6 +65,9 @@
         </h1>
         
         <div class="body-text">
+            <% if (page['fotorama']) { %>
+                <%- include('../partials/fotorama', {fotorama_images: fotorama_images}) %>
+            <% } %>
             <%- include('../compiled/' + page['directory'] + '/' + page['pageid']) %>
         </div>
     </div>

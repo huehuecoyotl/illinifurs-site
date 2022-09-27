@@ -2,6 +2,21 @@
 const express = require('express');
 const app = express();
 
+// Check whether we are in the prod environment or not
+if (require('os').hostname() == "illinifurs.com") {
+    // Secrets needed for mysql login, etc.
+    const secrets = require((process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE) + '/secrets/secret.json');
+    const mysql_pw = secrets["website-mysql-pw"];
+
+    // One unified login for MySQL stuff
+    app.locals.mysql_options = {
+        host: 'localhost',
+        user: 'illapp',
+        password: mysql_pw,
+        database: 'website'
+    };
+}
+
 const page_info = require(__dirname + '/misc/pages.json');
 file_not_found_entry = null;
 for (row in page_info) {
@@ -37,10 +52,6 @@ app.use(file_serve.router);
 // Webhooks stuff
 var webhooks = require('./modules/webhooks.js');
 app.use(webhooks.router);
-
-// Telegram bot
-var telegram = require('./modules/telegram.js');
-app.use(telegram.router);
 
 // If we've got this far, it doesn't exist
 app.use(function (req, res) {
