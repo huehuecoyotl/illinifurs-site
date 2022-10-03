@@ -10,7 +10,7 @@ set up .aws file (with correct permissions) inside illapp directory
 sudo echo "AWS_CONFIG_FILE=/apps/.aws" >> /etc/environment
 
 sudo hostnamectl set-hostname illinifurs.com
-sudo apt-get zsh make php git (ruby?)
+sudo apt-get zsh make php git clang libwebp-dev python3-pip python3-dev (ruby?)
 sudo systemctl disable apache2.service
 
 
@@ -24,6 +24,7 @@ sudo -u git git config --global init.defaultBranch main
 copy over git repos to /var/git/repositories / finish git migration
 (might be a good place to switch over elastic IP / routing stuff to new machine)
 use ssh from illapp into git@illinifurs.com (or whatever) once so that it's in known_hosts
+sudo -u illapp git config --global pull.rebase true
 
 
 # Next six steps, do as illapp
@@ -91,6 +92,12 @@ sudo vim /etc/nginx/sites-available/illinifurs-site
 sudo service nginx restart
 
 # (Milestone! Site is now fully up, and certbot will handle cert renewal.)
+
+
+# as illapp
+python3 -m pip install -U --user setuptools
+python3 -m pip install -U --user telethon cryptg pillow aiohttp hachoir mysql-connector
+clone the bot repo to /apps/bot
 
 # if you want these, as your own individual user, do the following
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
