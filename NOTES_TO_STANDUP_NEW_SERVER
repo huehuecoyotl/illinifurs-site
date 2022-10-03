@@ -1,0 +1,100 @@
+set up new instance in AWS (or wherever)
+
+sudo apt-get update && sudo apt-get upgrade
+set up illapp/illops/illdev/web-secrets users and groups
+set up secret.json (with correct permissions) inside illapp directory
+set up ssh privkey (with correct permissions) inside illapp directory
+
+# Change these if you use a different DNS (needed for certbot)
+set up .aws file (with correct permissions) inside illapp directory
+sudo echo "AWS_CONFIG_FILE=/apps/.aws" >> /etc/environment
+
+sudo hostnamectl set-hostname illinifurs.com
+sudo apt-get zsh make php git (ruby?)
+sudo systemctl disable apache2.service
+
+
+# Note! Do not give it an admin key when asked. 
+sudo apt-get install gitolite3
+
+# Set up the git user as "git" with homedir "/var/git", and *do* give your admin key here
+sudo dpkg-reconfigure gitolite3
+
+sudo -u git git config --global init.defaultBranch main 
+copy over git repos to /var/git/repositories / finish git migration
+(might be a good place to switch over elastic IP / routing stuff to new machine)
+use ssh from illapp into git@illinifurs.com (or whatever) once so that it's in known_hosts
+
+
+# Next six steps, do as illapp
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+source ~/.bashrc
+nvm install node
+nvm use node
+npm i -g npm
+npm i -g pm2
+
+# Use pm2 from your dev machine to do the next step (in order to preserve directory structure)
+install site in illapp from repo
+
+# as illapp, run this, then copy the output to run as a sudo user
+pm2 startup
+
+# as ilapp
+pm2 save
+
+# (Milestone! Site is now running on localhost:3000; curl-ing it from the machine might get error pages without DB but should work otherwise.)
+
+
+sudo apt-get install mariadb-server
+
+# Inside this file, you'll do two things.
+# Uncomment the line that starts #log_error to enable file-based error logging
+# Uncomment the line that starts #innodb_buffer_pool_size and change its value to something like 512M, to give the innodb engine more RAM
+sudo vim /etc/mysql/mariadb.conf.d/50-server.cnf
+
+sudo service mysql start
+
+sudo mysql
+
+# Inside mysql, you'll set up the DB like so
+CREATE DATABASE website;
+CREATE USER 'illapp'@'localhost' IDENTIFIED BY '<password>';
+GRANT INSERT, UPDATE, DELETE, SELECT ON website.* TO 'illapp'@'localhost';
+CREATE TABLE website.fotorama (url VARCHAR(255) PRIMARY KEY, type ENUM('image', 'video') NOT NULL, caption VARCHAR(255));
+# Also make sure to copy the data in the table(s) over
+
+# (Milestone! Site is now fully running on localhost:3000; curl-ing it from the machine should work.)
+
+
+sudo apt-get install nginx
+
+# Here, set up a basic site on port 80 for certbot to play with
+sudo vim /etc/nginx/sites-available/illinifurs-site
+
+sudo ln -s /etc/nginx/sites-available/illinifurs-site /etc/nginx/sites-enabled/illinifurs-site
+sudo service nginx start
+
+sudo snap install core
+sudo snap refresh core
+sudo snap install --classic certbot
+sudo ln -s /snap/bin/certbot /usr/bin/certbot
+sudo snap set certbot trust-plugin-with-root=ok
+
+# Change the next two lines if you use a different DNS
+sudo snap install certbot-dns-route53
+sudo certbot -i nginx --dns-route53 -d "illinifurs.com" -d "*.illinifurs.com"
+
+# set up real nginx config
+sudo vim /etc/nginx/sites-available/illinifurs-site
+
+sudo service nginx restart
+
+# (Milestone! Site is now fully up, and certbot will handle cert renewal.)
+
+# if you want these, as your own individual user, do the following
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+
+# and set powerlevel10k/powerlevel10k as your theme here
+vim ~/.zshrc
