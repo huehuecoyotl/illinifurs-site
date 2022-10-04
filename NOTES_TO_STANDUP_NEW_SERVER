@@ -98,6 +98,7 @@ sudo service nginx restart
 python3 -m pip install -U --user setuptools
 python3 -m pip install -U --user telethon cryptg pillow aiohttp hachoir mysql-connector
 clone the bot repo to /apps/bot
+create the telebot.service for systemd
 
 # if you want these, as your own individual user, do the following
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
