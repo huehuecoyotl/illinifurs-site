@@ -2,6 +2,7 @@ package-lock.json
 core
 node_modules/*
 public/html/*
+public/images/officers/*
 public/txt/coyotes.txt
 misc/pages.json
 misc/test.db
