@@ -68,7 +68,11 @@
             <% if (page['fotorama']) { %>
                 <%- include('../partials/fotorama', {fotorama_images: fotorama_images}) %>
             <% } %>
-            <%- include('../compiled/' + page['directory'] + '/' + page['pageid']) %>
+            <% if (page['pageid'] === "chat") { %>
+                <%- include('../compiled/' + page['directory'] + '/' + page['pageid'], {officers: officers}) %>
+            <% } else { %>
+                <%- include('../compiled/' + page['directory'] + '/' + page['pageid']) %>
+            <% }%>
         </div>
     </div>
     <div class="column right-gutter">

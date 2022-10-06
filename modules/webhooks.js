@@ -6,6 +6,7 @@ const execSync = require('child_process').execSync;
 
 const home_directory = (process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE);
 var self_hook = "do-not-use"
+var bot_hook = "also-no-use"
 
 if (require('os').hostname() == "illinifurs.com") {
     // Keep the actual webhooks we use secret
