@@ -15,7 +15,7 @@ The primary group chat of the IlliniFurs is on Telegram. Meetings and special ev
     <div class="card">
         <a href="https://t.me/<%= officer['username'] %>" style="text-decoration: none;">
             <div class="container">
-                <img src="<%= officer['imageURL'] %>" style="max-width: 64px;" alt="<%= officer['displayName'] %>'s profile pic" />
+                <img class="officer-pic" src="<%= officer['imageURL'] %>" alt="<%= officer['displayName'] %>'s profile pic" />
                 <br />
                 <%= officer['title'] %>: <%= officer['displayName'] %>
             </div>

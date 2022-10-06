@@ -139,6 +139,7 @@ blockquote p {
   width: 15%;
   max-width: 90%;
   margin: 6px 16px;
+  border-radius: 10%;
 }
 
 .card.focused {
@@ -214,6 +215,11 @@ blockquote p {
 .twitter-timeline {
   margin-top: 3ex !important;
   margin-bottom: 3ex !important;
+}
+
+.officer-pic {
+  max-width: 64px;
+  border-radius: 100%;
 }
 
 @media screen and (max-width: 960px) {
