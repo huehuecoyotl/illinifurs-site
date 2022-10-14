@@ -8,7 +8,8 @@ sed -i.sav -e 's/<p>\(<img .*>\)<\/p>/\1/g' $2
 sed -i.sav -e 's/<h6>/<div class="caption">/g' $2
 sed -i.sav -e 's/<\/h6>/<\/div>/g' $2
 sed -i.sav -e 's/alt=/title=/g' $2
-sed -i.sav -e 's/<p>\(<%[^>]*>\)<\/p>/\1/g' $2
+sed -i.sav -e 's/<p><%/<%/g' $2
+sed -i.sav -e 's/%><\/p>/%>/g' $2
 sed -i.sav -e '
 /<\/blockquote>/ {
     N

@@ -65,14 +65,8 @@
         </h1>
         
         <div class="body-text">
-            <% if (page['fotorama']) { %>
-                <%- include('../partials/fotorama', {fotorama_images: fotorama_images}) %>
-            <% } %>
-            <% if (page['pageid'] === "chat") { %>
-                <%- include('../compiled/' + page['directory'] + '/' + page['pageid'], {officers: officers}) %>
-            <% } else { %>
-                <%- include('../compiled/' + page['directory'] + '/' + page['pageid']) %>
-            <% }%>
+            <%- include('../partials/fotorama', {fotorama_images: fotorama_images}) %>
+            <%- include('../compiled/' + page['directory'] + '/' + page['pageid'], {officers: officers, events: events}) %>
         </div>
     </div>
     <div class="column right-gutter">

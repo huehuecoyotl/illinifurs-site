@@ -8,8 +8,8 @@
   --mainfgbold: #ff5f05;
   --mainfglite: #009fd4;
 
-  --cardbg:     #f8fafc;
-  --cardfg:     #13294b;
+  --calEvent:   #ff5f05;
+  --calEmpty:   #849BC1;
 
   --headfont: Trigot, serif;
   --sectfont: 'Fjalla One', sans-serif;
@@ -222,6 +222,73 @@ blockquote p {
   border-radius: 100%;
 }
 
+.event-title-holder {
+  display: table;
+}
+
+.title-holder {
+  display: table-cell;
+}
+
+.title-spacer {
+  display: table-cell;
+}
+
+.title-middle {
+  display: inline-table;
+}
+
+.calMonth {
+  display: table-row;
+}
+
+.title-card-spacer {
+  display: table-row;
+  height: 10px;
+}
+
+.title-item {
+  display: table;
+}
+
+.event-title {
+  display: table-row;
+  font-weight: bold;
+}
+
+.calMonth > h5 {
+  margin: 0;
+}
+
+.calRow {
+  display: table;
+  text-align: center;
+  margin: auto;
+}
+
+.calEntry {
+  display: table-cell;
+}
+
+.calEntry {
+  width: 8px;
+  height: 8px;
+  padding: 2px;
+}
+
+.calEntry > div {
+  height: 100%;
+  width: 100%;
+}
+
+.calEntry > .negative {
+  background-color: var(--calEmpty);
+}
+
+.calEntry > .positive {
+  background-color: var(--calEvent);
+}
+
 @media screen and (max-width: 960px) {
   .topnav .gutter, .topnav .spacer, .topnav-content a, .index-page .topnav a.icon {
     display: none;
@@ -298,6 +365,18 @@ blockquote p {
 
   .fotorama--fullscreen .fotorama__wrap {
     width: 100% !important;
+  }
+
+  .event-title-holder {
+    display: block;
+  }
+
+  .title-spacer {
+    display: none;
+  }
+
+  .title-holder {
+    display: inline-block;
   }
 }
 

@@ -1,9 +1,11 @@
-<center><div class="fotorama" data-width="60%" data-allowfullscreen="true" data-fit="scaledown" data-transition="crossfade" data-loop="true" data-autoplay="true" data-keyboard="true" data-shuffle="true">
-<% fotorama_images.forEach(function(image){ 
-    if (image['type'] == 'image') { %>
-        <img src="<%= image['url'] %>" <%= image['caption'] ? `data-caption=${image['caption']}` : '' %> >
-    <% } else if (image['type'] == 'video') { %>
-        <a href="<%= image['url'] %>"><%= image['caption'] %></a>
-    <% }
-}); %>
-</div></center>
+<% if (fotorama_images) { %>
+    <center><div class="fotorama" data-width="60%" data-allowfullscreen="true" data-fit="scaledown" data-transition="crossfade" data-loop="true" data-autoplay="true" data-keyboard="true" data-shuffle="true">
+    <% fotorama_images.forEach(function(image){ 
+        if (image['type'] == 'image') { %>
+            <img src="<%= image['url'] %>" <%= image['caption'] ? `data-caption=${image['caption']}` : '' %> >
+        <% } else if (image['type'] == 'video') { %>
+            <a href="<%= image['url'] %>"><%= image['caption'] %></a>
+        <% }
+    }); %>
+    </div></center>
+<% } %>

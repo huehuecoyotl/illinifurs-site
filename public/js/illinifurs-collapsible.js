@@ -14,14 +14,14 @@ $('.collapsible').click(function () {
   $(this).next().css('maxHeight', newHeight);
 });
 
-$('.card a').focusin(function () {
+$('.card a, .card div').focusin(function () {
   $(this).parents(".card").addClass('focused');
 });
-$('.card a').focusout(function () {
+$('.card a, .card div').focusout(function () {
   $(this).parents(".card").removeClass('focused');
 });
 
-$('.card a').hover(function () {
+$('.card a, .card div').hover(function () {
   $(this).parents(".card").addClass('focused');
 }, function () {
   $(this).parents(".card").removeClass('focused');
