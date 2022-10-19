@@ -65,6 +65,7 @@ GRANT INSERT, UPDATE, DELETE, SELECT ON website.* TO 'illapp'@'localhost';
 CREATE TABLE website.fotorama (url VARCHAR(255) PRIMARY KEY, type ENUM('image', 'video') NOT NULL, caption VARCHAR(255));
 CREATE TABLE website.officers (id INTEGER PRIMARY KEY, username VARCHAR(255) NOT NULL, displayName VARCHAR(255), title ENUM('site-admin', 'President', 'Treasurer', 'Vice President') NOT NULL, imageURL VARCHAR(255) NOT NULL, chatInviter BOOLEAN NOT NULL);
 CREATE TABLE website.events (id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(255) NOT NULL, location VARCHAR(255) NOT NULL, start DATETIME NOT NULL, end DATETIME NOT NULL, allDay BOOLEAN NOT NULL, description TEXT NOT NULL);
+CREATE TABLE website.weekly_meeting (restriction ENUM('') NOT NULL PRIMARY KEY, name VARCHAR(255) NOT NULL, location VARCHAR(255) NOT NULL, dayOfWeek TINYINT NOT NULL, startTime TIME NOT NULL, endTime TIME NOT NULL, description TEXT NOT NULL);
 # Also make sure to copy the data in the table(s) over
 # Also make sure to copy the officer images over
 
@@ -102,6 +103,8 @@ python3 -m pip install -U --user setuptools
 python3 -m pip install -U --user telethon cryptg pillow aiohttp hachoir mysql-connector
 clone the bot repo to /apps/bot
 create the telebot.service for systemd
+
+clone the scripts repo to /apps/scripts
 
 # if you want these, as your own individual user, do the following
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
