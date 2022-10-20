@@ -212,6 +212,16 @@ blockquote p {
   border-radius: 0px !important;
 }
 
+.telegram-channel {
+  margin-top: 3ex;
+  margin-bottom: 3ex;
+  height: 720px;
+  width: 100%;
+  border-radius: 15px;
+  box-shadow: 0 0 16px 3px rgba(0,0,0,0.2);
+  border: 0;
+}
+
 .twitter-timeline {
   margin-top: 3ex !important;
   margin-bottom: 3ex !important;
@@ -345,6 +355,7 @@ blockquote p {
   }
 
   .left-phone-gutter, .right-gutter {
+    display: block;
     width: 79%;
     margin: 0 auto;
   }

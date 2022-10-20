@@ -39,7 +39,7 @@
 
 <% function leftGutter(widgets) {
     if (widgets) { %>
-        &nbsp;
+        <iframe class="telegram-channel" src="https://xn--r1a.website/s/telegram"></iframe>
     <% } else { %>
         &nbsp;
     <% }
@@ -69,11 +69,12 @@
             <%- include('../compiled/' + page['directory'] + '/' + page['pageid'], {officers: officers, events: events}) %>
         </div>
     </div>
-    <div class="column right-gutter">
-        <%= rightGutter(page['widgets']) %>
-    </div>
+    
     <div class="column left-phone-gutter">
         <%= leftGutter(page['widgets']) %>
+    </div>
+    <div class="column right-gutter">
+        <%= rightGutter(page['widgets']) %>
     </div>
 
     <%- include('../partials/tail', {tail_scripts: tail_scripts}) %>

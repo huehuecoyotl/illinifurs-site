@@ -9,7 +9,7 @@
 
 # Telegram
 
-The primary group chat of the IlliniFurs is on Telegram. Meetings and special events are also announced in this chat. Contact one of the officers below to be added.
+The primary group chat of the IlliniFurs is on Telegram. Meetings and special events are announced in this chat, and it's where most conversation happens as well. Contact one of the officers below to be added.
 
 <% officers.forEach(function(officer){ %>
     <div class="card">
@@ -25,4 +25,4 @@ The primary group chat of the IlliniFurs is on Telegram. Meetings and special ev
 
 # Discord
 
-There is an IlliniFurs Discord server, which is mostly used for voice chat.
+There is also an IlliniFurs Discord server. It's not very active -- it's mostly used for voice chat, particularly in between semesters -- but you can [check it out here](https://discord.gg/w5Uar5FscD).
