@@ -50,6 +50,10 @@ blockquote p {
   text-align: justify;
 }
 
+img {
+  max-width: 100%;
+}
+
 .topnav {
   background-color: var(--headbg);
   font-family: var(--headfont);
