@@ -13,6 +13,7 @@ if (require('os').hostname() == "illinifurs.com") {
     const secrets = require(home_directory + '/secrets/secret.json');
     self_hook = secrets["git-path-self"];
     bot_hook = secrets["git-path-bot"];
+    scripts_hook = secrets["git-path-scripts"];
 }
 
 router.post(`/${self_hook}`, function (req, res) {
@@ -23,6 +24,11 @@ router.post(`/${self_hook}`, function (req, res) {
 router.post(`/${bot_hook}`, function (req, res) {
     res.sendStatus(200); 
     execSync('bash ' + home_directory + '/bot/post_deploy.sh');
+});
+
+router.post(`/${scripts_hook}`, function (req, res) {
+    res.sendStatus(200); 
+    execSync('bash ' + home_directory + '/scripts/post_deploy.sh');
 });
 
 module.exports = {
