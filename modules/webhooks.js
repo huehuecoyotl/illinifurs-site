@@ -16,15 +16,13 @@ if (require('os').hostname() == "illinifurs.com") {
 }
 
 router.post(`/${self_hook}`, function (req, res) {
-    execSync('bash ' + home_directory + '/site/source/post_deploy.sh');
-    // Weirdly, this isn't actually supposed to send a status back --
-    // Node should restart the site, resulting in a 503 from nginx
-    res.sendStatus(500); 
+    res.sendStatus(200);
+    execSync('bash ' + home_directory + '/site/source/post_deploy.sh'); 
 });
 
 router.post(`/${bot_hook}`, function (req, res) {
-    execSync('bash ' + home_directory + '/bot/post_deploy.sh');
     res.sendStatus(200); 
+    execSync('bash ' + home_directory + '/bot/post_deploy.sh');
 });
 
 module.exports = {
