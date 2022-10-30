@@ -6,6 +6,7 @@ const app = express();
 if (require('os').hostname() == "illinifurs.com") {
     // Secrets needed for mysql login, etc.
     const secrets = require((process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE) + '/secrets/secret.json');
+    const icons_dir = require((process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE) + '/icons/');
     const mysql_pw = secrets["website-mysql-pw"];
 
     // One unified login for MySQL stuff
@@ -15,6 +16,16 @@ if (require('os').hostname() == "illinifurs.com") {
         password: mysql_pw,
         database: 'website'
     };
+
+    app.locals.icon_options = {
+        root: icons_dir,
+        dotfiles: 'deny'
+    }
+} else {
+    app.locals.icon_options = {
+        root: __dirname + '/public/icons/',
+        dotfiles: 'deny'
+    }
 }
 
 const page_info = require(__dirname + '/misc/pages.json');

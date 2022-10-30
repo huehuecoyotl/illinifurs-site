@@ -6,6 +6,11 @@ router.get('/images/*', function (req, res) {
     res.sendFile('images/' + file, req.app.locals.site_options);  
 });
 
+router.get('/icons/:file', function (req, res) {
+    var file = req.params.file;
+    res.sendFile(file, req.app.locals.icon_options);  
+});
+
 router.get('/css/:file', function (req, res) {
     var file = req.params.file;
     res.sendFile('css/' + file, req.app.locals.site_options);
