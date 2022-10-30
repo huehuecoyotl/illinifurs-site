@@ -56,7 +56,7 @@ app.use(webhooks.router);
 // If we've got this far, it doesn't exist
 app.use(function (req, res) {
     res.status(404);
-    res.render('pages/engine', { page: file_not_found_entry });
+    engine.render({ res: res, page: file_not_found_entry });
 });
 
 // Handle errors (but keep in mind, some may just be 404s from sendFile calls)
@@ -64,7 +64,7 @@ app.use(function (err, req, res, next) {
     var status = err.status || err.statusCode;
     if (status === 404) {
         res.status(404);
-        res.render('pages/engine', { page: file_not_found_entry });
+        engine.render({ res: res, page: file_not_found_entry });
     } else {
         if (res.headersSent) {
             return next(err);

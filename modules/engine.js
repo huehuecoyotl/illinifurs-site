@@ -182,12 +182,16 @@ function flowRight(fn_stack) {
 function useEngine(res, file, dbInfo) {
     var entry = null;
 
+    console.log("here");
+
     for (row in page_info) {
         if (page_info[row]["pageid"] === file && page_info[row]["directory"] === "main") {
             entry = page_info[row];
             break;
         }
     }
+
+    console.log(entry);
 
     if (entry) {
         fn_stack = [renderEnginePage];
@@ -252,5 +256,6 @@ router.get('/:file', function (req, res, next) {
 });
 
 module.exports = {
-    router: router
+    router: router,
+    render: renderEnginePage
 };
