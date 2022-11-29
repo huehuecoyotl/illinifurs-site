@@ -8,7 +8,7 @@
 [//]: # (fotorama: true)
 [//]: # (tail_scripts: ["/js/illinifurs-collapsible.js"])
 
-## The IlliniFurs are a social student-run organization focused on creating lasting connections and bonds for individuals with a common interest in anthropomorphic animals in media.
+**<center><span style="font-size:21px;">The IlliniFurs are a social student-run organization focused on creating lasting connections and bonds for individuals with a common interest in anthropomorphic animals in media.</span></center>**
 
 <div class="card">
     <a href="/chat" style="text-decoration: none;">
